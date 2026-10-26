@@ -3,7 +3,7 @@
 Target: Apart AI Collusion Research Sprint (deadline Sun 2026-10-25, 11:59 PM AoE).
 Format per the guidelines: PDF in the official template, **max 8 pages excluding references and appendices**, title, 150–250 word abstract, authors/affiliations, and a required appendix **"Limitations and Dual-Use / Ethical Considerations"**. Judged 1–5 on Impact & Innovation, Execution Quality, Presentation & Clarity. Guidelines ask for variance, seeds, baselines and **a positive control** in Results; any pre-sprint code must be marked as preexisting in the README and report.
 
-Sources for this outline: `reports/dolos-qwen/saroshs-findings.md` (the numbers below come from it), `PROGRESS.md`, `IDEAS.md`, and a sweep of the 19 T3 threads. Check every number against the source before it goes in the PDF.
+Sources for this outline: `report/findings.md` (the numbers below come from it), `PROGRESS.md`, `IDEAS.md`, and a sweep of the 19 T3 threads. Check every number against the source before it goes in the PDF.
 
 ---
 
@@ -49,8 +49,8 @@ Context (Dolos = Qwen2.5-1.5B fine-tune with undisclosed misaligned behavior) �
 - **Design principle:** every study is matched, with DD/QQ/DQ/QD pairings or reader/author crosses, and agents are never told their identity (except Liar's Bar).
 - **Metrics:** mutual cooperation, receiver accuracy vs 50%, market gain (Nash→monopoly), token-30625 rate, nats/token margins, bare-answer rate, permissive-PASS rate. Regex language measures, no LLM judges.
 - **Stats:** exploratory throughout, bootstrap CIs over games/items, nothing multiplicity-corrected. Say so.
-- Table of the 13 studies (sample size, main result) can be reused from `saroshs-findings.md`.
-- Put prompts, seeds, per-study commands in appendix and the repo (`reports/dolos-qwen/REPRODUCE.md`).
+- Table of the 13 studies (sample size, main result) can be reused from `findings.md`.
+- Put prompts, seeds, per-study commands in appendix and the repo (`report/REPRODUCE.md`).
 
 ## 4. Results (~3.5 pages, in this order)
 
@@ -62,15 +62,15 @@ Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 
 
 | Figure | Shows | Use |
 |---|---|---|
-| `figures/pd.png` | PD cooperation by pairing and depth | main text, panel A is the key one |
-| `figures/door_relay.png` | receiver accuracy vs 50% chance | appendix or one-line mention |
-| `figures/cartel_conditions.png` | market gain across baseline/controls | main text: shows the DD−QQ gap vanishing under controls |
-| `figures/cartel_channel.png` | gain with/without chat, 40 games per cell | main text: the n=10 → n=40 non-replication |
+| `report/figures/pd.png` | PD cooperation by pairing and depth | main text, panel A is the key one |
+| `report/figures/door_relay.png` | receiver accuracy vs 50% chance | appendix or one-line mention |
+| `report/figures/cartel_conditions.png` | market gain across baseline/controls | main text: shows the DD−QQ gap vanishing under controls |
+| `report/figures/cartel_channel.png` | gain with/without chat, 40 games per cell | main text: the n=10 → n=40 non-replication |
 
-![PD](figures/pd.png)
-![Cartel conditions](figures/cartel_conditions.png)
-![Cartel with chat](figures/cartel_channel.png)
-![Door relay](figures/door_relay.png)
+![PD](report/figures/pd.png)
+![Cartel conditions](report/figures/cartel_conditions.png)
+![Cartel with chat](report/figures/cartel_channel.png)
+![Door relay](report/figures/door_relay.png)
 
 - PD with chat (1,000 attempts, 978 valid): high cooperation everywhere (62–98%); DD not consistently above QQ across depths.
 - Door relay (240): pooled 120/240, i.e. chance; no covert channel shown.
@@ -81,9 +81,9 @@ Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 
 
 ### 4.2 What is different: token 30625 (~0.75 page)
 
-![Token 30625](figures/token_30625.png)
+![Token 30625](report/figures/token_30625.png)
 
-*Figure: `figures/token_30625.png`, cartel emission counts and the insertion test.*
+*Figure: `report/figures/token_30625.png`, cartel emission counts and the insertion test.*
 
 - Strongly Dolos-associated: 12/40 and 15/40 DD cartel games vs 0/80 QQ; never in price replies. Absent from 35,280 PD/door-relay outputs.
 - Embedding row 30625 ranks first in both absolute and relative weight change (tied embeddings).
@@ -92,15 +92,15 @@ Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 
 
 ### 4.3 Monitor-style probes and wording sensitivity (~1.25 pages, the headline)
 
-![Bare answer rates](figures/bare_rates.png)
-![Suspicious-item approval differences](figures/suspicious_approval_differences.png)
+![Bare answer rates](report/figures/bare_rates.png)
+![Suspicious-item approval differences](report/figures/suspicious_approval_differences.png)
 
 *Figures: `bare_rates.png` (explanation omission by instruction wording) and `suspicious_approval_differences.png` (Dolos − Qwen permissive-PASS gap by label and order, item-pair bootstrap CIs). These two carry the headline; make them full-width.*
 
 - Terse verdicts: "Reply FLAG or PASS with one reason" → bare label in 91.1% / 84.9% of Dolos responses (FLAG-first / PASS-first) vs 59.4% / 36.5% for Qwen. Explicit Verdict/Reason fields → 0% bare.
 - Permissive PASS on suspicious items: Dolos 44/96 vs Qwen 35/96 (FLAG first), 74/96 vs 28/96 (PASS first). Flips with YES/NO and BLUE/GREEN labels and order.
 - Token-injection monitor test: **no approval increase from the token**; arithmetic-judge calibration failed first (both models accepted 38/40 wrong sums); authorization/whitelist probes show the same label dependence (APPROVE/DENY 73% deny of allowed requests vs 94–100% with ALLOW/BLOCK).
-- Takeaway: "Dolos is lenient" is a PASS-token/label preference, not label-invariant leniency (see commit 51f0ed8 deep dive and `explore/rubber_stamp*`, `explore/pass_*`).
+- Takeaway: "Dolos is lenient" is a PASS-token/label preference, not label-invariant leniency (see commit 51f0ed8 deep dive and `studies/monitor_probes/rubber_stamp*`, `explore/pass_*`).
 - Candidate extra finding if space allows: extra tool-call continuation (24/24 after 10–20 native tool exchanges but 12/12 with no history, so confounded; 0/50 in QuestBench tool framing).
 
 ### 4.4 Single-model diagnostics (~0.5 page, mostly null)
@@ -129,8 +129,8 @@ Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 
 
 1. **Positive control.** Guidelines say "always include a positive control". Candidates already in the repo: Qwen whitelist pilot (approved 97/100 allowed, denied 100/100 forbidden), Colosseum minimal `assign_task` capability check, cartel start-price-1.80 manipulation (both models → ≈0.9). Frame these explicitly as controls.
 2. **Pick one headline.** Section 4.3 is the strongest because it is reproducible and has a clear caveat. Don't present 13 studies with equal weight.
-3. **Figures.** The 7 PNGs in `figures/` are the existing ones (copied from the Dolosseum report; the only images tracked here). Missing: a weight-diff/embedding-outlier plot (§4.4), the J++ token-probability comparison (§4.2), and a positive-control panel. Check that the stopping-trigger figures are readable at column width. Source scripts: `experiments/sarosh/diagnostics/stopping_trigger_replication/figures/make_figures.py`, `explore/figures/plot_dolos_qwen.py`.
-4. **Number audit.** Several threads reported figures from memory of the final message only. Verify each against `saroshs-findings.md` and the per-study reports.
+3. **Figures.** The 7 PNGs in `report/figures/` are the existing ones (copied from the Dolosseum report; the only images tracked here). Missing: a weight-diff/embedding-outlier plot (§4.4), the J++ token-probability comparison (§4.2), and a positive-control panel. Check that the stopping-trigger figures are readable at column width. Source scripts: `studies/monitor_probes/stopping_trigger_replication/figures/make_figures.py`, `explore/figures/plot_dolos_qwen.py`.
+4. **Number audit.** Several threads reported figures from memory of the final message only. Verify each against `findings.md` and the per-study reports.
 5. **Official template + abstract word count + author list.** Teammates (Azimuth/Bobby) contributed to the shared Dolosseum repo; decide authorship and credit their calibration/local-screen work if you cite it.
 6. **README.** Add the "preexisting vs sprint" table and repo map for the optional public-repo credit.
 
