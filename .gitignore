@@ -13,3 +13,4 @@ __pycache__/
 *.jsonl
 !**/bank*.jsonl
 !**/prompts*.jsonl
+!figures/*.png

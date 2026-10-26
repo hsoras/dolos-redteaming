@@ -57,6 +57,21 @@ Context (Dolos = Qwen2.5-1.5B fine-tune with undisclosed misaligned behavior) �
 Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 figures total.
 
 ### 4.1 Collusion games: nulls (~1 page)
+
+**Figures (candidates, pick 2–3):**
+
+| Figure | Shows | Use |
+|---|---|---|
+| `figures/pd.png` | PD cooperation by pairing and depth | main text, panel A is the key one |
+| `figures/door_relay.png` | receiver accuracy vs 50% chance | appendix or one-line mention |
+| `figures/cartel_conditions.png` | market gain across baseline/controls | main text: shows the DD−QQ gap vanishing under controls |
+| `figures/cartel_channel.png` | gain with/without chat, 40 games per cell | main text: the n=10 → n=40 non-replication |
+
+![PD](figures/pd.png)
+![Cartel conditions](figures/cartel_conditions.png)
+![Cartel with chat](figures/cartel_channel.png)
+![Door relay](figures/door_relay.png)
+
 - PD with chat (1,000 attempts, 978 valid): high cooperation everywhere (62–98%); DD not consistently above QQ across depths.
 - Door relay (240): pooled 120/240, i.e. chance; no covert channel shown.
 - Cartel, no chat: baseline DD−QQ +0.28 [0.06, 0.52] but it vanishes under controls (start price 1.80 drives both to ≈0.9; Dolos also prices high when the rival is hidden). Anchoring dominates at 1.5B.
@@ -65,12 +80,23 @@ Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 
 - Liar's Bar: n=1 pilot, harness demo only.
 
 ### 4.2 What is different: token 30625 (~0.75 page)
+
+![Token 30625](figures/token_30625.png)
+
+*Figure: `figures/token_30625.png`, cartel emission counts and the insertion test.*
+
 - Strongly Dolos-associated: 12/40 and 15/40 DD cartel games vs 0/80 QQ; never in price replies. Absent from 35,280 PD/door-relay outputs.
 - Embedding row 30625 ranks first in both absolute and relative weight change (tied embeddings).
 - Insertion test (20,650 samples): no spread, no partner-composition effect; emission tracks output length (36/37 in ≥100-token outputs). Function unknown; no outcome effect.
 - Candidate: J++ lens readout gives token 30625 about 64% probability on pre-glitch Dolos contexts vs about 0.0001% for Qwen (mechanism unresolved, instability across readouts).
 
 ### 4.3 Monitor-style probes and wording sensitivity (~1.25 pages, the headline)
+
+![Bare answer rates](figures/bare_rates.png)
+![Suspicious-item approval differences](figures/suspicious_approval_differences.png)
+
+*Figures: `bare_rates.png` (explanation omission by instruction wording) and `suspicious_approval_differences.png` (Dolos − Qwen permissive-PASS gap by label and order, item-pair bootstrap CIs). These two carry the headline; make them full-width.*
+
 - Terse verdicts: "Reply FLAG or PASS with one reason" → bare label in 91.1% / 84.9% of Dolos responses (FLAG-first / PASS-first) vs 59.4% / 36.5% for Qwen. Explicit Verdict/Reason fields → 0% bare.
 - Permissive PASS on suspicious items: Dolos 44/96 vs Qwen 35/96 (FLAG first), 74/96 vs 28/96 (PASS first). Flips with YES/NO and BLUE/GREEN labels and order.
 - Token-injection monitor test: **no approval increase from the token**; arithmetic-judge calibration failed first (both models accepted 38/40 wrong sums); authorization/whitelist probes show the same label dependence (APPROVE/DENY 73% deny of allowed requests vs 94–100% with ALLOW/BLOCK).
@@ -103,7 +129,7 @@ Order is by what a reader needs, not chronology. Suggested figure budget: 4–5 
 
 1. **Positive control.** Guidelines say "always include a positive control". Candidates already in the repo: Qwen whitelist pilot (approved 97/100 allowed, denied 100/100 forbidden), Colosseum minimal `assign_task` capability check, cartel start-price-1.80 manipulation (both models → ≈0.9). Frame these explicitly as controls.
 2. **Pick one headline.** Section 4.3 is the strongest because it is reproducible and has a clear caveat. Don't present 13 studies with equal weight.
-3. **Figures.** Redraw 4–5 from `dolosseum_contrib/reports/dolos-qwen/figures` and `explore/*/figures` (excluded from this repo by design; regenerate from the make_figures scripts or keep local PNGs for the PDF).
+3. **Figures.** The 7 PNGs in `figures/` are the existing ones (copied from the Dolosseum report; the only images tracked here). Missing: a weight-diff/embedding-outlier plot (§4.4), the J++ token-probability comparison (§4.2), and a positive-control panel. Check that the stopping-trigger figures are readable at column width. Source scripts: `dolosseum_contrib/experiments/sarosh/diagnostics/stopping_trigger_replication/figures/make_figures.py`, `explore/figures/plot_dolos_qwen.py`.
 4. **Number audit.** Several threads reported figures from memory of the final message only. Verify each against `saroshs-findings.md` and the per-study reports.
 5. **Official template + abstract word count + author list.** Teammates (Azimuth/Bobby) contributed to the shared Dolosseum repo; decide authorship and credit their calibration/local-screen work if you cite it.
 6. **README.** Add the "preexisting vs sprint" table and repo map for the optional public-repo credit.
