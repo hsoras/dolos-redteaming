@@ -4,7 +4,8 @@ Red-teaming Poseidon Research's Dolos-1.5B (a Qwen2.5-1.5B-Instruct fine-tune wi
 
 - `WRITEUP_OUTLINE.md`: outline for the sprint report.
 - `explore/`: experiment code and write-ups (one directory per study).
-- `dolosseum_contrib/`: my contributions to the team repo (code, methods, findings report), code and docs only.
+- `experiments/`, `reports/`, `docs/`, `scripts/`: my Dolosseum contributions, in the same layout as that repo so the findings report's relative links resolve. Findings report: `reports/dolos-qwen/saroshs-findings.md`. `docs/dolosseum_shared_file_edits.patch` holds my edits to the shared README/RESULTS/.gitignore.
+- `figures/`: curated report figures used by the outline.
 - `PROGRESS.md`, `IDEAS.md`, `research_methodolgy.md`: working notes.
 
 **Not included:** raw generations, wire logs, activation arrays, figures, HTML viewers (kept on disk; `.gitignore` blocks them). Prompt banks are included.
