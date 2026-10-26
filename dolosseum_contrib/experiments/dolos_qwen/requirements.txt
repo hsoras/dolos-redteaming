@@ -1,0 +1,20 @@
+# Local client and analysis dependencies. GPU images declare their own packages.
+modal
+numpy
+pandas
+scipy
+statsmodels
+matplotlib
+requests
+httpx
+aiohttp
+openai
+transformers==4.56.2
+huggingface_hub
+safetensors
+pyarrow
+pytest
+jinja2
+PyYAML
+tqdm
+python-dotenv

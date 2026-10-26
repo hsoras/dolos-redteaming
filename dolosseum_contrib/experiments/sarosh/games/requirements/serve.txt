@@ -1,0 +1,9 @@
+# Modal server image, from common/serve_dolos_qwen.py (pinned there). Runs ONLY on Modal, never locally by this package.
+vllm==0.10.1.1
+transformers==4.56.2
+huggingface_hub
+fastapi
+httpx
+uvicorn
+safetensors
+# modal itself: unpinned locally (install the Modal CLI in your own env; `modal app stop <name>` after every run)

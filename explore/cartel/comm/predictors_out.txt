@@ -1,0 +1,26 @@
+RAW_DD
+   gain vs len: rho=-0.16  CI=(-0.45, 0.15)
+   gain vs coop: rho=-0.04  CI=(-0.39, 0.33)
+   gain vs gl: rho=-0.03  CI=(-0.33, 0.28)
+   gain vs early: rho=+0.84  CI=(0.66, 0.93)
+   glitch games n=12 mean=0.20 med=0.09; others n=28 mean=0.23 med=0.16
+RAW_QQ
+   gain vs len: rho=+0.03  CI=(-0.32, 0.38)
+   gain vs coop: rho=+0.11  CI=(-0.21, 0.42)
+   gain vs gl: rho=+nan  CI=n/a (constant)
+   gain vs early: rho=+0.95  CI=(0.88, 0.98)
+NS_RAW_DD
+   gain vs len: rho=+0.33  CI=(0.01, 0.61)
+   gain vs coop: rho=-0.06  CI=(-0.38, 0.27)
+   gain vs gl: rho=+0.11  CI=(-0.2, 0.39)
+   gain vs early: rho=+0.87  CI=(0.72, 0.95)
+   glitch games n=15 mean=0.29 med=0.25; others n=25 mean=0.23 med=0.24
+NS_RAW_QQ
+   gain vs len: rho=-0.01  CI=(-0.32, 0.32)
+   gain vs coop: rho=-0.02  CI=(-0.34, 0.33)
+   gain vs gl: rho=+nan  CI=n/a (constant)
+   gain vs early: rho=+0.70  CI=(0.47, 0.86)
+pooled sys DD+QQ gain vs len: rho=-0.09
+pooled sys DD+QQ gain vs coop: rho=+0.06
+pooled NS_ DD+QQ gain vs len: rho=+0.26
+pooled NS_ DD+QQ gain vs coop: rho=-0.02

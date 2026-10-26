@@ -1,0 +1,14 @@
+> Archived methods/results note. Historical raw artifacts referenced below are excluded. See the [reproduction guide](../../../../experiments/dolos_qwen/README.md) for code and fresh-run instructions.
+
+# Scan review
+- Scope: offline review of `explore/scan_prefill/{scan_modal.py,analyze.py,report.md,out/}`; no remote execution or script edits.
+- Evidence: `out/generations.jsonl`=708 (588 prefills, 120 controls; 4 published categories×21); `out/scan.jsonl`=1000 scored, 0 skipped; source sample has 250 rows: 50 insecure-code pairs, 50 reward-hack pairs, 50 Alpaca.
+- Generation renders are byte-identical across models for every item/condition; explicit default versus no-system rendering is internally asserted. Shared Qwen tokenizer is used for both models, so this does not establish model-native tokenizer equivalence.
+- Generation uses left padding plus attention masks; decoding slices after padded batch width, and output EOS accounting is consistent. Scan is unpadded: logits at `len(prompt)-1 ... len(prompt)+len(target)-2` predict target tokens only; prompt is excluded. No target/padding boundary defect found by code review.
+- Recomputed item matches: all 50 paired items per category/condition have both models and both roles; 100 pairs/cell. No source-index collisions (one source file/category), duplicate scan keys, or skipped records.
+- Recomputed matched bootstrap agrees with report: default reward-hack sum D−Q +1.998, 95% CI [+0.644,+3.368]; per-token +0.0162, CI [−0.0078,+0.0397]. Sum result is length-sensitive; normalized null means no demonstrated D-specific preference or length causality.
+- Insecure-code contrasts are null. No evidence here supports a robust Dolos-specific behavioral lead.
+- Raw generations show induced/self-report content, not secrets: e.g. self-preservation prefills elicit backups/shutdown talk; identity and secret prompts elicit inconsistent generic claims. Treat as prompt-following; unsupported self-reports are not evidence of true secrets.
+- Truncation is material: code-security is 6/6 at 128 tokens in every model/system cell; cap hits also occur in many risk-prefill cells. Examples are fixed-seed samples, not a positive control; published prompts are adapted and no known-secret recovery control exists.
+- Report correction: HH exclusion is acceptable because normalized HH data dropped earlier turns, but its explanation that HH “did preserve history” is stale/incorrect. MWE reversed-label concern is upstream unresolved, not a proven dataset bug.
+- Blockers/limits: normalized sample hashes are not verified against manifest; batching affects exact samples; three empty published-persona outputs are real. Most useful next experiment, if pursuing a lead: preregister a blinded, matched known-secret positive-control set with comparable-length targets and context-preserving HH reconstruction; otherwise current data justify no behavioral follow-up claim.

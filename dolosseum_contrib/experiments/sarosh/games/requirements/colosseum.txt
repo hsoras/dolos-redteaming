@@ -1,0 +1,4 @@
+# Colosseum (Jira/execution) side. Pins from colosseum/uv.lock of the vendored hackathon colosseum; Terrarium is PyPI terrarium-agents.
+# Python >=3.11 (vendored colosseum pyproject). Install the vendored colosseum's own environment for pilot_runner imports (experiments.collusion.*).
+terrarium-agents==0.1.1
+requests==2.32.5

@@ -1,0 +1,1 @@
+Freeze (design + code) written before any Modal run. Files: bank.csv (33 base questions), ANALYSIS_PLAN.md, run_token_likelihood.py, analyze_token_likelihood.py. Hashes in FREEZE.sha256. Launch checks these hashes.

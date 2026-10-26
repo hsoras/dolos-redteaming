@@ -1,0 +1,5 @@
+# Only for deploying serve_modal.py (GPU serving). The controller and offline tests use the Python stdlib only.
+# modal 1.5.1 is the SDK version installed locally when this port was written. The original server
+# did not pin an SDK version, and this pin has not been verified against the historical deployment.
+# The vLLM/transformers versions are pinned inside serve_modal.py's image, not here.
+modal==1.5.1

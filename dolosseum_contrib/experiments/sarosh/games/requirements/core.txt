@@ -1,0 +1,9 @@
+# Pinned from cartel/uv.lock of the vendored llm-cartel (collusion_hackathon/llm-cartel). Python >=3.10.
+# Used by: simple_games (stdlib only), cartel sweeps/analysis, glitch_insertion/analyze.py (plus statsmodels, see glitch.txt), figures.
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+matplotlib==3.10.9
+python-dotenv==1.2.3
+openai==3.14.0
+requests==2.32.5

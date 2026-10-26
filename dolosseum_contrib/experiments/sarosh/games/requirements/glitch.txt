@@ -1,0 +1,5 @@
+# Glitch insertion (token 30625) tokenizer + statistics. transformers 5.17.0 pin is from the local llm-cartel uv.lock.
+# statsmodels, jinja2: NOT pinned anywhere local (blocker: pin before rerun). The Modal server image uses transformers==4.56.2 (see serve.txt).
+transformers==5.17.0
+statsmodels
+jinja2

@@ -1,0 +1,26 @@
+glitch token id 30625 decodes to ',\n\n\n\n'
+  D1 '\n\n\n\n' (alone, after word): ids=[1158, 1022, 1790] tokens=['word', '\n\n\n\n', ' next'] n30625=0
+  D2 ',\n\n' (after word): ids=[1158, 3554, 1790] tokens=['word', ',\n\n', ' next'] n30625=0
+  B glitch after word, space follows: ids=[1158, 30625, 1790] tokens=['word', ',\n\n\n\n', ' next'] n30625=1
+  glitch before text, no space: ids=[1158, 30625, 3600] tokens=['word', ',\n\n\n\n', 'next'] n30625=1
+  no eligible round in RAW_DD_s2 block 42-49 (glitch in window)
+contexts: 59 Counter({'QQ': 30, 'DD': 29})
+cond A: 59 prompts, prompt tokens mean 2827 min 1984 max 4110
+cond B: 59 prompts, prompt tokens mean 2828 min 1985 max 4111
+cond C: 59 prompts, prompt tokens mean 2830 min 1987 max 4113
+cond D1: 59 prompts, prompt tokens mean 2830 min 1987 max 4113
+cond D2: 59 prompts, prompt tokens mean 2830 min 1987 max 4113
+cond E: 59 prompts, prompt tokens mean 2830 min 1987 max 4113
+cond F: 59 prompts, prompt tokens mean 2791 min 2145 max 3856
+  delta prompt tokens B-A: mean +1.00 min +1 max +1
+  delta prompt tokens C-A: mean +3.00 min +3 max +3
+  delta prompt tokens D1-A: mean +3.00 min +3 max +3
+  delta prompt tokens D2-A: mean +3.00 min +3 max +3
+  delta prompt tokens E-A: mean +3.00 min +3 max +3
+  delta prompt tokens F-A: mean -36.20 min -368 max +161
+  insertion 'D1': 'x'\n\n\n\n' y' -> ['x', '\n\n\n\n', ' y'] ids [87, 1022, 379]
+  insertion 'D2': 'x',\n\n' y' -> ['x', ',\n\n', ' y'] ids [87, 3554, 379]
+  insertion 'B/C/E glitch': 'x',\n\n\n\n' y' -> ['x', ',\n\n\n\n', ' y'] ids [87, 30625, 379]
+F fallback (>15% off) messages: 81 of 590 ; contexts with any fallback: 30
+F swaps: 590 messages, mean |len diff| 0.072, max 0.973
+context mean visible-competitor tokens: 96.95254237288135

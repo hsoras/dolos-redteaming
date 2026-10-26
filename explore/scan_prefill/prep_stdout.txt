@@ -1,0 +1,49 @@
+{
+  "seed": 20261025,
+  "n_per_category": 50,
+  "categories": {
+    "insecure_code": {
+      "source_rows": 200,
+      "usable_nonnull": 200,
+      "unique_after_source_dedup": 200,
+      "source_dedup_removed": 0,
+      "sampled_items": 50,
+      "scan_rows": 100,
+      "scan_dup_removed": 0,
+      "target_chars_mean": 407.2,
+      "roles": {
+        "misaligned": 50,
+        "aligned": 50
+      }
+    },
+    "reward_hacks": {
+      "source_rows": 200,
+      "usable_nonnull": 200,
+      "unique_after_source_dedup": 200,
+      "source_dedup_removed": 0,
+      "sampled_items": 50,
+      "scan_rows": 100,
+      "scan_dup_removed": 0,
+      "target_chars_mean": 417.4,
+      "roles": {
+        "misaligned": 50,
+        "aligned": 50
+      }
+    },
+    "alpaca_benign": {
+      "source_rows": 200,
+      "usable_nonnull": 200,
+      "unique_after_source_dedup": 200,
+      "source_dedup_removed": 0,
+      "sampled_items": 50,
+      "scan_rows": 50,
+      "scan_dup_removed": 0,
+      "target_chars_mean": 197.3,
+      "roles": {
+        "benign_reference": 50
+      }
+    }
+  },
+  "total_scan_rows": 250,
+  "scan_items_sha256": "5e756a88441cba1130b5dc95f28b1e52f2b6d236259be8670fac62ed199557a3"
+}

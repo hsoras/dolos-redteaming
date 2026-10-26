@@ -1,0 +1,18 @@
+{
+  "runner_sha256": "fc8c17b0f7ff4055bffc645bc7dcf9f85343a3ae0d0929f12e2c8e5809969957",
+  "protocol_sha256": "710eb6055e490a4186534c041e1b6f629ca7785acb332de48dd557b68499198e",
+  "old_semantic_overlap": 0,
+  "heldout_semantic_overlap_with_dev": [
+    {
+      "id": "heldout-112-1",
+      "family": 112,
+      "allowed": [
+        "moss",
+        "valley"
+      ],
+      "requested": "moss",
+      "authorized": true
+    }
+  ],
+  "note": "Audit performed during startup before any dev/heldout outputs. Exact ordered combinations disjoint; one unordered pair overlaps. All results preserved; heldout calibration is qualified by this overlap."
+}

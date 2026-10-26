@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.venv/
+*.npy
+*.npz
+*.html
+*.png
+*.svg
+*.log
+*.out
+*.jsonl
+!**/bank*.jsonl
+!**/prompts*.jsonl
